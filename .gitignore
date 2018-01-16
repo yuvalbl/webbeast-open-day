@@ -10,3 +10,5 @@ node_modules
 # templates
 template.html
 
+# ngrok
+ngrok.exe

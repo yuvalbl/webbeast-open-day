@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Flight Controls</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/client/public/styles.css">
+
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+<header>
+    <span class="menu-con">&lt;WEB<span class="beast">beast</span>/&gt;</span>
+    <span>Open Day</span>
+</header>
+
+<main class="flight-controls-main">
+    <h1>Flight Controls</h1>
+
+    <div class="flight-controls">
+        <div class="row1">
+            <button class="btn btn-primary" onclick="takeoff()">Takeoff</button>
+            <button class="btn" onclick="land()">Land</button>
+        </div>
+        <div class="row2">
+            <button class="btn" onclick="move('up')">UP</button>
+            <button class="btn" onclick="move('down')">Down</button>
+        </div>
+        <div>
+            <button class="btn" onclick="move('counterClockwise')">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </button>
+            <button class="btn" onclick="move('front')">
+                <span class="glyphicon glyphicon-arrow-up"></span>
+            </button>
+            <button class="btn" onclick="move('clockwise')">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </button>
+        </div>
+        <div>
+            <button class="btn" onclick="move('left')">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+            </button>
+            <button class="btn" onclick="move('back')">
+                <span class="glyphicon glyphicon-arrow-down"></span>
+            </button>
+            <button class="btn" onclick="move('right')">
+                <span class="glyphicon glyphicon-arrow-right"></span>
+            </button>
+        </div>
+    </div>
+    <div>
+        <p>
+            Status:
+        </p>
+    </div>
+</main>
+
+<script>
+    const socket = io();
+
+    function takeoff() {
+        socket.emit('takeoff');
+    }
+
+    function land() {
+        socket.emit('land');
+    }
+
+    function move(direction) {
+        socket.emit('move', direction);
+    }
+    socket.on("takingOff", function () {
+        $("#content").text("airborn").fadeIn(500).fadeOut(1000)
+    })
+</script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>WEBbeast Open Day</title>
+    <link rel="stylesheet" type="text/css" href="/client/public/styles.css">
+</head>
+
+<body>
+
+<template id="option-template">
+    <li class="option">
+        <input type="radio" name="option">
+        <label></label>
+    </li>
+</template>
+
+<header>
+    <span class="menu-con">&lt;WEB<span class="beast">beast</span>/&gt;</span>
+    <span>Open Day</span>
+</header>
+<main>
+    <div class="img-container">
+        <img src="/client/public/chandler1.png">
+    </div>
+    <h2 id="questionText"></h2>
+    <form action="/answer">
+        <input id="token" class="token">
+        <ul id="optionsPlaceholder"></ul>
+        <input type="submit" value="Send">
+    </form>
+</main>
+
+<script>
+    const token = Math.random().toString(15).substring(7);
+    document.getElementById('token').value = token;
+
+    fetch('/client/public/quiz.json')
+        .then(response => response.json())
+        .then(question => {
+            const tmpl = document.getElementById('option-template');
+            const optionsPlaceholder = document.getElementById('optionsPlaceholder');
+
+            document.getElementById('questionText').innerHTML = question.text;
+
+            question.options.forEach( (optionText, index) => {
+                const newNode = tmpl.content.cloneNode(true);
+                newNode.querySelector('input').value = index;
+                newNode.querySelector('label').innerText  = optionText;
+                newNode.querySelector('input').id = 'input'+index;
+                newNode.querySelector('label').setAttribute('for', 'input'+index);
+                optionsPlaceholder.appendChild(newNode);
+            })
+
+        })
+</script>
+
+</body>
+
+</html>
