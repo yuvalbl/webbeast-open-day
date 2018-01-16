@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/yuvalbl/WEBbeast_TMP1.git"
   },
-  "author": "",
+  "author": "Yuval bar levi",
   "license": "ISC",
   "dependencies": {
     "ar-drone": "^0.3.3",
