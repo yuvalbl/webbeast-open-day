@@ -1,0 +1,255 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Webbeast open Day styles */
+html {
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #03161E;
+}
+
+header {
+    font-size: 4vh;
+    padding: 5vh 0;
+    text-align: center;
+    color: #b8e0d6;
+}
+
+.menu-con {
+    font-weight: 300;
+}
+
+.beast {
+    font-style: italic;
+    font-weight: bold;
+    color: #f5a256;
+}
+
+h1 {
+    text-align: center;
+    font-size: 5vh;
+}
+
+h2 {
+    font-size: 4vh;
+    height: 10vh;
+    padding: 0 5vh;
+}
+
+.img-container {
+    max-height: 25vh;
+    text-align: center;
+    padding: 1vh;
+}
+
+.img-container img {
+    max-height: 23vh;
+}
+
+.token {
+    display: none;
+}
+
+label, input {
+    font-size: 3vh;
+}
+
+input {
+
+}
+
+main {
+    color: white;
+    font-weight: bold;
+}
+
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    display: none;
+}
+
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label {
+    position: relative;
+    padding-left: 6vh;
+    cursor: pointer;
+    line-height: 5vh;
+    display: inline-block;
+}
+
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: .5vh;
+    width: 4vh;
+    height: 4vh;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 3vh;
+    height: 3vh;
+    background: #6FC1AC;
+    position: absolute;
+    top: 1vh;;
+    left: 0.5vh;;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+li {
+    list-style: none;
+    height: 6vh;
+    padding: 0 5vh;
+}
+
+label {
+    display: inline-block;
+    width: 100%;
+    height: 5vh;
+    line-height: 5vh;
+}
+
+input[type="submit"] {
+    position: fixed;
+    margin: 0;
+    bottom: 0;
+    height: 10vh;
+    width: 100%;
+    color: black;
+    font-size: 5vh;
+    border-radius: 0;
+    background-color: #6FC1AC;
+    padding: 2vh;
+    text-decoration: none;
+    border: transparent;
+    cursor: pointer;
+    outline: none;
+}
+
+.btn {
+    border-radius: 1vh;
+}
+
+.message-box {
+    margin: 5vh;
+    text-align: center;
+    padding: 20px;
+    border: 3px solid white;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    /*color: white;*/
+    font-weight: Bold;
+    font-size: 5vh;
+}
+
+main.flight-controls-main {
+    padding: 3vh;
+}
+
+.btn {
+    color: #03161E;
+}
+
+.row1 button, .row2 button {
+    width: 50%;
+}
+
+.flight-controls {
+    margin-top: 2vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 50vh;
+}
+
+.flight-controls div {
+    height: 50%;
+    display: flex;
+}
+
+.flight-controls button {
+    margin: 1vh;
+    height: 10vh;
+    flex-grow: 1;
+    font-size: 4vh;
+
+}
