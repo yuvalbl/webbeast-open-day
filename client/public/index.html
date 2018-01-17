@@ -33,27 +33,27 @@
 </main>
 
 <script>
-    const token = Math.random().toString(15).substring(7);
-    document.getElementById('token').value = token;
+//    const token = Math.random().toString(15).substring(7);
+//    document.getElementById('token').value = token;
 
-    fetch('/client/public/quiz.json')
-        .then(response => response.json())
-        .then(question => {
-            const tmpl = document.getElementById('option-template');
-            const optionsPlaceholder = document.getElementById('optionsPlaceholder');
-
-            document.getElementById('questionText').innerHTML = question.text;
-
-            question.options.forEach( (optionText, index) => {
-                const newNode = tmpl.content.cloneNode(true);
-                newNode.querySelector('input').value = index;
-                newNode.querySelector('label').innerText  = optionText;
-                newNode.querySelector('input').id = 'input'+index;
-                newNode.querySelector('label').setAttribute('for', 'input'+index);
-                optionsPlaceholder.appendChild(newNode);
-            })
-
-        })
+//    fetch('/client/public/quiz.json')
+//        .then(response => response.json())
+//        .then(question => {
+//            const tmpl = document.getElementById('option-template');
+//            const optionsPlaceholder = document.getElementById('optionsPlaceholder');
+//
+//            document.getElementById('questionText').innerHTML = question.text;
+//
+//            question.options.forEach( (optionText, index) => {
+//                const newNode = tmpl.content.cloneNode(true);
+//                newNode.querySelector('input').value = index;
+//                newNode.querySelector('label').innerText  = optionText;
+//                newNode.querySelector('input').id = 'input'+index;
+//                newNode.querySelector('label').setAttribute('for', 'input'+index);
+//                optionsPlaceholder.appendChild(newNode);
+//            })
+//
+//        })
 </script>
 
 </body>
