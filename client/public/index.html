@@ -26,15 +26,19 @@
     </div>
     <h2 id="questionText"></h2>
     <form action="/answer">
-        <input id="token" class="token">
+        <input id="token" class="token" name="token">
         <ul id="optionsPlaceholder"></ul>
         <input type="submit" value="Send">
     </form>
 </main>
 
 <script>
-    const token = Math.random().toString(15).substring(7);
-    document.getElementById('token').value = token;
+    let token = localStorage.getItem('token');
+    if(!token) {
+        token = Math.random().toString(15).substring(7);
+        localStorage.setItem('token', token);
+    }
+    document.getElementById('token').setAttribute('value', token);
 
     fetch('/client/public/quiz.json')
         .then(response => response.json())

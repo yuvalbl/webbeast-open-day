@@ -22,7 +22,7 @@ app.get('/answer', function (req, res) {
     if(req.query && req.query.option) {
         if(req.query.option == ANSWER_INDEX) {
             // correct answer
-            if(winner_token === null) {
+            if(winner_token === null || winner_token === req.query['token']) {
                 // first correct answer
                 winner_token = req.query['token'];
                 res.sendFile(path.join(__dirname + '/client/drone/drone_controls.html'))
