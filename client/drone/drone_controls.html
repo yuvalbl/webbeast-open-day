@@ -68,9 +68,6 @@
     function move(direction) {
         socket.emit('move', direction);
     }
-    socket.on("takingOff", function () {
-        $("#content").text("airborn").fadeIn(500).fadeOut(1000)
-    })
 </script>
 </body>
 

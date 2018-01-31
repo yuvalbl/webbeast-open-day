@@ -44,8 +44,16 @@ io.on('connection', function (socket) {
     console.log('a user connected');
 
     socket.on('move', function (move) {
-        drone[move](SPEED);
-        drone.after(200, drone.stop);
+        if(move === 'up' ||
+            move === 'down' ||
+            move === 'counterClockwise' ||
+            move === 'clockwise') {
+            drone[move](SPEED * 2);
+            drone.after(800, drone.stop);
+        } else {
+            drone[move](SPEED);
+            drone.after(200, drone.stop);
+        }
         console.log(`${move} at speed of ${SPEED}`);
     });
 
