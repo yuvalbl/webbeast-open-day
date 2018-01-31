@@ -85,11 +85,11 @@ header {
 
 h1 {
     text-align: center;
-    font-size: 5vh;
+    font-size: 4vh;
 }
 
 h2 {
-    font-size: 4vh;
+    font-size: 3vh;
     height: 10vh;
     padding: 0 5vh;
 }
@@ -101,6 +101,8 @@ h2 {
 }
 
 .img-container img {
+
+
     max-height: 23vh;
 }
 
@@ -119,6 +121,15 @@ input {
 main {
     color: white;
     font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 [type="radio"]:checked,
@@ -178,6 +189,7 @@ li {
     list-style: none;
     height: 6vh;
     padding: 0 5vh;
+    overflow: hidden;
 }
 
 label {
@@ -188,7 +200,7 @@ label {
 }
 
 input[type="submit"] {
-    position: fixed;
+    flex-grow: 1;
     margin: 0;
     bottom: 0;
     height: 10vh;

@@ -17,62 +17,62 @@ app.get('/', function (req, res) {
 });
 
 app.get('/answer', function (req, res) {
-    // console.log('get-answer', req.query);
-    //
-    // if(req.query && req.query.option) {
-    //     if(req.query.option == ANSWER_INDEX) {
-    //         // correct answer
-    //         if(winner_token === null) {
-    //             // first correct answer
-    //             winner_token = req.query['token'];
-    //             res.sendFile(path.join(__dirname + '/client/drone/drone_controls.html'))
-    //         } else {
-    //             // not-first correct answer
-    //             res.sendFile(path.join(__dirname + '/client/public/too_slow.html'))
-    //         }
-    //     } else {
-    //         // wrong answer
-    //         res.sendFile(path.join(__dirname + '/client/public/wrong_answer.html'))
-    //     }
-    // } else {
-    //     res.sendFile(path.join(__dirname + '/client/index.html'))
-    // }
+    console.log('get-answer', req.query);
+
+    if(req.query && req.query.option) {
+        if(req.query.option == ANSWER_INDEX) {
+            // correct answer
+            if(winner_token === null) {
+                // first correct answer
+                winner_token = req.query['token'];
+                res.sendFile(path.join(__dirname + '/client/drone/drone_controls.html'))
+            } else {
+                // not-first correct answer
+                res.sendFile(path.join(__dirname + '/client/public/too_slow.html'))
+            }
+        } else {
+            // wrong answer
+            res.sendFile(path.join(__dirname + '/client/public/wrong_answer.html'))
+        }
+    } else {
+        res.sendFile(path.join(__dirname + '/client/index.html'))
+    }
 });
 
 // client - server socket communication
-// io.on('connection', function (socket) {
-//     console.log('a user connected');
-//
-//     socket.on('move', function (move) {
-//         drone[move](SPEED);
-//         drone.after(200, drone.stop);
-//         console.log(`${move} at speed of ${SPEED}`);
-//     });
-//
-//     socket.on('takeoff', function () {
-//         console.log('takeoff');
-//
-//         drone.takeoff(function(){
-//             console.log('airbone');
-//         });
-//     });
-//
-//     socket.on('land', function () {
-//         console.log('land');
-//         drone.stop();
-//         drone.land(function(){
-//             console.log('landed');
-//         })
-//     })
-// });
-//
-// app.get('/stop', function (req, res) {
-//     console.log('emergency landing');
-//     drone.stop();
-//     drone.land(function(){
-//         console.log('emergency landed');
-//     })
-// });
+io.on('connection', function (socket) {
+    console.log('a user connected');
+
+    socket.on('move', function (move) {
+        drone[move](SPEED);
+        drone.after(200, drone.stop);
+        console.log(`${move} at speed of ${SPEED}`);
+    });
+
+    socket.on('takeoff', function () {
+        console.log('takeoff');
+
+        drone.takeoff(function(){
+            console.log('airbone');
+        });
+    });
+
+    socket.on('land', function () {
+        console.log('land');
+        drone.stop();
+        drone.land(function(){
+            console.log('landed');
+        })
+    })
+});
+
+app.get('/stop', function () {
+    console.log('emergency landing');
+    drone.stop();
+    drone.land(function(){
+        console.log('emergency landed');
+    })
+});
 
 
 server.listen(3001, function(){
